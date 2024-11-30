@@ -70,14 +70,14 @@ const EditProfileForm: FC = () => {
           placeholder='Your name here'
           defaultValue={UserDataQuery.data.name}
           {...register('name', {
-            required: { value: true, message: 'Forgot to type your name?' },
+            required: { value: true, message: 'Olvidaste escribir tu nombre?' },
             minLength: {
               value: 2,
-              message: 'Name cannot be shorter than 2 characters.',
+              message: 'no puede ser menor a 2 caracteres.',
             },
             maxLength: {
               value: 20,
-              message: 'Names cannot be longer than 20 characters.',
+              message: 'no puede ser mayor a 20 caracteres.',
             },
           })}
         />
@@ -114,7 +114,7 @@ const EditProfileForm: FC = () => {
         <textarea
           title='bio'
           className='textarea mb-1 h-32 whitespace-pre-line'
-          placeholder='About you'
+          placeholder='Sobre ti'
           defaultValue={UserDataQuery.data.bio || ''}
           {...register('bio', {
             maxLength: {
@@ -134,7 +134,7 @@ const EditProfileForm: FC = () => {
           type='button'
           title='Cancel'
           onClick={() => void router.push('/profile')}>
-          Cancel
+          Cancelar
         </button>
 
         <button
@@ -142,7 +142,7 @@ const EditProfileForm: FC = () => {
           type='submit'
           className='btn max-w-[10rem] bg-themePrimary-400/90 text-themePrimary-50/95 hover:bg-themePrimary-400'
           title='Update Profile'>
-          Update Profile
+          Actualizar perfil
         </button>
       </fieldset>
     </form>

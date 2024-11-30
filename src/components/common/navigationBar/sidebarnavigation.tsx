@@ -44,7 +44,7 @@ const SideBarNavigation: FC<{
                 ? 'text-themePrimary-50'
                 : 'text-themePrimary-50/60'
             }`}>
-            Create
+            Crear
           </span>
         </i>
       </div>

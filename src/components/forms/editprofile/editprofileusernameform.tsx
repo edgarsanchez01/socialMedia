@@ -59,7 +59,7 @@ const EditProfileUsernameForm: FC<{
         placeholder='Your username here'
         defaultValue={currentUsername}
         {...register('username', {
-          required: { value: true, message: 'Forgot to type your username?' },
+          required: { value: true, message: 'olvidaste escribit tu usuario?' },
           minLength: {
             value: 3,
             message: 'username cannot be shorter than 3 characters.',

@@ -17,12 +17,28 @@ const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
+  // Registrar el Service Worker
+  if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker
+        .register('/service-worker.js')
+        .then((registration) => {
+          console.log('Service Worker registrado con éxito:', registration);
+        })
+        .catch((error) => {
+          console.error('Error al registrar el Service Worker:', error);
+        });
+    });
+  }
+  
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.75, ease: 'easeInOut' }}>
-      <BackgroundGradient></BackgroundGradient>
+      transition={{ duration: 0.75, ease: 'easeInOut' }}
+    >
+      <BackgroundGradient />
       <SessionProvider session={session}>
         <Component {...pageProps} />
       </SessionProvider>

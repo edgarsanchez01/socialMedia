@@ -20,7 +20,7 @@ const SettingsAnnouncementNotification: FC<{
 
   return (
     <>
-      <span>Announcement Notification</span>
+      <span>Activar nontificaciones</span>
       <span className='flex flex-grow justify-end pr-4'>
         <div className='flex'>
           <label className='relative inline-flex cursor-pointer items-center'>

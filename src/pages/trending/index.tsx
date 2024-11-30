@@ -7,7 +7,7 @@ const TrendingPage: NextPage = () => {
     <>
       <HeadComp headTitle='Trending'></HeadComp>
 
-      <PageLayout page={'trending'}></PageLayout>
+      <PageLayout page={'tendencias'}></PageLayout>
     </>
   );
 };

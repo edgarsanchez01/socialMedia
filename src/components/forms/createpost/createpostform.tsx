@@ -131,7 +131,7 @@ const CreatePostForm: FC<{ formSetCallback: (value: boolean) => void }> = ({
 
         <div className='py-4 text-center'>
           <span className='flex items-center justify-center font-mukta text-2xl leading-tight tracking-wide text-themePrimary-100/95'>
-            <span className='flex-grow'> Create a post</span>
+            <span className='flex-grow'>Crear una publicacion</span>
             <AiFillCloseCircle
               title='close'
               className='mr-4 mb-3 h-5 w-5 cursor-pointer text-base text-red-400 hover:text-red-500'
@@ -139,16 +139,16 @@ const CreatePostForm: FC<{ formSetCallback: (value: boolean) => void }> = ({
           </span>
         </div>
         <textarea
-          placeholder='Your thoughts here'
+          placeholder='olvidaste escribir aqui'
           className='textarea mb-1'
           {...register('postText', {
             required: {
               value: true,
-              message: 'Forgot to type something here?',
+              message: 'Escribe tus pensamientos aqui',
             },
             maxLength: {
               value: 150,
-              message: 'A post cannot be longer than 150 characters :/',
+              message: 'un post no debe ser mayor a 150 caracteres :/',
             },
           })}></textarea>
 
@@ -227,7 +227,7 @@ const CreatePostForm: FC<{ formSetCallback: (value: boolean) => void }> = ({
         <button
           className='btn bg-themePrimary-400/90 text-themePrimary-50/95 hover:bg-themePrimary-400'
           type='submit'>
-          Post
+          Publicar
         </button>
       </form>
       {showEmojiMenu && (

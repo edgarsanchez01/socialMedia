@@ -7,7 +7,7 @@ const BookmarksPage: NextPage = () => {
     <>
       <HeadComp headTitle='Bookmarks'></HeadComp>
 
-      <PageLayout page={'bookmarks'}></PageLayout>
+      <PageLayout page={'guardado'}></PageLayout>
     </>
   );
 };

@@ -7,7 +7,7 @@ const NotificationsPage: NextPage = () => {
     <>
       <HeadComp headTitle='Notifications'></HeadComp>
 
-      <PageLayout page={'notifications'}></PageLayout>
+      <PageLayout page={'nontificaciones'}></PageLayout>
     </>
   );
 };

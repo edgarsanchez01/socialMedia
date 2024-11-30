@@ -21,7 +21,7 @@ const getNavMenuTabs = (iconSize = 32) => {
     activateIcon: JSX.Element;
   }> = [
     {
-      name: 'Home',
+      name: 'Incio',
       link: '/home',
       inactivateIcon: (
         <AiOutlineHome
@@ -33,7 +33,7 @@ const getNavMenuTabs = (iconSize = 32) => {
       ),
     },
     {
-      name: 'Trending',
+      name: 'Tendencias',
       link: '/trending',
       inactivateIcon: (
         <HiOutlineGlobe
@@ -46,7 +46,7 @@ const getNavMenuTabs = (iconSize = 32) => {
     },
 
     {
-      name: 'Notifications',
+      name: 'Nontificaciones',
       link: '/notifications',
       inactivateIcon: (
         <AiOutlineBell
@@ -58,7 +58,7 @@ const getNavMenuTabs = (iconSize = 32) => {
       ),
     },
     {
-      name: 'Bookmarks',
+      name: 'Guardado',
       link: '/bookmarks',
       inactivateIcon: (
         <HiOutlineBookmark
@@ -70,7 +70,7 @@ const getNavMenuTabs = (iconSize = 32) => {
       ),
     },
     {
-      name: 'Settings',
+      name: 'Configuraciones',
       link: '/settings',
       inactivateIcon: (
         <AiOutlineSetting

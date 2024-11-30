@@ -57,7 +57,7 @@ const CommentList: FC<{
       {commentsData.length < 1 && (
         <NothingToSeeHere
           text={
-            <span>No comments yet, be the first one!</span>
+            <span>Sin comentarios, Se el primero!</span>
           }></NothingToSeeHere>
       )}
     </div>

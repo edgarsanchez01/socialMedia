@@ -22,7 +22,7 @@ const EditProfileURL: FC<{
     <input
       className='input mb-1'
       type='url'
-      placeholder='https://yourwebsite.com'
+      placeholder='https://tuwebsite.com'
       defaultValue={currentUrl || ''}
       {...register('url', { validate: validateURL })}></input>
   );

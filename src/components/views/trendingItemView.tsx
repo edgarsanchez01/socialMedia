@@ -26,7 +26,7 @@ const TrendintItemView: FC<{
         )}
         {!hashtagData.subtext && (
           <h3 className='font-mukta text-sm font-thin leading-tight tracking-wide text-themePrimary-50/50 group-hover:text-themePrimary-50/70'>
-            See posts about {`#${hashtagData.text}`}
+            Ver mas sobre {`#${hashtagData.text}`}
           </h3>
         )}
       </article>

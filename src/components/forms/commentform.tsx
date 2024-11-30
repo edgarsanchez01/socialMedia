@@ -44,11 +44,11 @@ const CommentForm: FC<{
         <textarea
           title='Comment'
           className='textarea h-12 flex-grow'
-          placeholder='Your comment'
+          placeholder='Tu comentario'
           {...register('commentText', {
             required: {
               value: true,
-              message: 'forgot to write something here?',
+              message: 'Ovidaste escribir algo aqui?',
             },
             maxLength: { value: 200, message: 'Too long for a comment.' },
           })}></textarea>
@@ -56,7 +56,7 @@ const CommentForm: FC<{
         <button
           type='submit'
           className='btn h-fit w-fit rounded-3xl bg-themePrimary-400/90 px-2 text-themePrimary-50/95 hover:bg-themePrimary-400'>
-          Comment
+          comentar
         </button>
       </div>
       <div className='pl-14 pt-2'>

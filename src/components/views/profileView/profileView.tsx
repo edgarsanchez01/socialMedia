@@ -72,7 +72,7 @@ const ProfileView: FC<{ data: IReturnUser }> = ({ data }) => {
           {data.isAuthor && (
             <Link href='/profile/edit'>
               <button className='btn absolute -bottom-12 right-2 w-fit rounded-3xl px-3  font-mukta text-sm '>
-                Edit profile
+                editar perfil
               </button>
             </Link>
           )}
@@ -124,7 +124,7 @@ const ProfileView: FC<{ data: IReturnUser }> = ({ data }) => {
 
             <span className='flex w-fit items-center gap-1 font-mukta font-thin text-themePrimary-50/50'>
               <MdDateRange></MdDateRange>
-              Joined {getMonthStr(data.foundUser.joinedOn.getMonth())}{' '}
+              Se unio {getMonthStr(data.foundUser.joinedOn.getMonth())}{' '}
               {data.foundUser.joinedOn.getFullYear()}
             </span>
           </h6>
@@ -141,7 +141,7 @@ const ProfileView: FC<{ data: IReturnUser }> = ({ data }) => {
                 {followersCount}
               </span>
               <span className='font-mukta font-thin tracking-wider text-themePrimary-50/60 group-hover/follows:underline'>
-                Followers
+                seguidores
               </span>
             </Link>
 
@@ -156,7 +156,7 @@ const ProfileView: FC<{ data: IReturnUser }> = ({ data }) => {
                 {data.foundUser._count.followings}
               </span>
               <span className='font-mukta font-thin tracking-wider text-themePrimary-50/60 group-hover/follows:underline'>
-                Followings
+                siguiendo
               </span>
             </Link>
           </h6>

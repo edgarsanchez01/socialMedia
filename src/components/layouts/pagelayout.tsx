@@ -20,11 +20,11 @@ import FollowsViewOnUser from '@components/views/Follows/followsViewOnUser';
 import OpenPost from '@components/views/openPost';
 
 type pages =
-  | 'home'
-  | 'trending'
-  | 'notifications'
-  | 'bookmarks'
-  | 'settings'
+  | 'inicio'
+  | 'tendencias'
+  | 'nontificaciones'
+  | 'guardado'
+  | 'configuraciones'
   | 'profile'
   | 'user'
   | 'edit profile'
@@ -94,22 +94,22 @@ const PageLayout: FC<{ page: pages }> = ({ page }) => {
               transition={{ ease: 'easeInOut', duration: 0.2 }}
               key={2}
               className='pb-12 sm:overflow-auto'>
-              {page === 'home' && (
+              {page === 'inicio' && (
                 <PostList authorId={session.user.id}></PostList>
               )}
 
-              {page === 'trending' && (
+              {page === 'tendencias' && (
                 <TrendingList session={session} key={3}></TrendingList>
               )}
-              {page === 'notifications' && (
+              {page === 'nontificaciones' && (
                 <NotificationsList key={4}></NotificationsList>
               )}
-              {page === 'bookmarks' && (
+              {page === 'guardado' && (
                 <BookmarksList
                   key={5}
                   authorId={session.user.id}></BookmarksList>
               )}
-              {page === 'settings' && <SettingsForm key={6}></SettingsForm>}
+              {page === 'configuraciones' && <SettingsForm key={6}></SettingsForm>}
 
               {page === 'profile' && (
                 <UserProfileView

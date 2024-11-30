@@ -19,7 +19,7 @@ const PeopleToFollow: FC = () => {
     <div className='w-full py-5 pl-3'>
       <header className='mb-4 w-full pl-1'>
         <span className='font-mukta text-xl leading-none tracking-wide text-themePrimary-50'>
-          Who to follow
+          A quien seguir
         </span>
       </header>
       <div className='pl-2'>

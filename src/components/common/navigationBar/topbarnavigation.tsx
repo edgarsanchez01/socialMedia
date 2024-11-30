@@ -76,7 +76,7 @@ const TopBarNavigation: FC<{
                   </i>
                   <span
                     className={`ml-2 font-mukta text-lg tracking-wider text-themePrimary-50/70 `}>
-                    Create
+                    Crear
                   </span>
                 </div>
 

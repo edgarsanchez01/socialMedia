@@ -116,8 +116,8 @@ const EditImageUploader: FC<{
       <div className='flex border-b border-themePrimary-50/30'>
         <div className='px-4 py-2 text-center font-mukta text-base tracking-wide text-themePrimary-50/95'>
           {uploadType === 'banner'
-            ? 'Update Banner Picture'
-            : 'Update Profile Picture'}
+            ? 'Actualizar foto de banner'
+            : 'Actualizar foto de perfil'}
         </div>
         <div className=' flex flex-grow items-center justify-end pr-4'>
           <AiFillCloseCircle
@@ -155,7 +155,7 @@ const EditImageUploader: FC<{
                 size={18}
                 className='mb-2 text-themePrimary-300/70 hover:text-themePrimary-300/95 group-hover/image:text-themePrimary-300'></BsImage>
               <span className='font-mukta tracking-wide text-themePrimary-50/80 group-hover/image:text-themePrimary-50/95'>
-                Choose Image
+                Elegir imagen
               </span>
             </div>
           </label>
@@ -192,8 +192,8 @@ const EditImageUploader: FC<{
               type='button'
               onClick={handleUpload}
               className='btn bg-themePrimary-400/90 text-themePrimary-50/95 hover:bg-themePrimary-400'>
-              {uploadType === 'image' && 'Set new profile picture'}
-              {uploadType === 'banner' && 'Set new banner picture'}
+              {uploadType === 'image' && 'Cambiar foto de perfil'}
+              {uploadType === 'banner' && 'Cambiar foto de portada'}
             </button>
           </div>
         </>

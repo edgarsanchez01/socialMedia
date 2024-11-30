@@ -7,7 +7,7 @@ const SettingsPage: NextPage = () => {
     <>
       <HeadComp headTitle='Settings'></HeadComp>
 
-      <PageLayout page={'settings'}></PageLayout>
+      <PageLayout page={'configuraciones'}></PageLayout>
     </>
   );
 };

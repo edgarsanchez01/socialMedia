@@ -8,7 +8,7 @@ const HomePage: NextPage = () => {
     <>
       <HeadComp headTitle='Home'></HeadComp>
 
-      <PageLayout page={'home'}></PageLayout>
+      <PageLayout page={'inicio'}></PageLayout>
     </>
   );
 };
