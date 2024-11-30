@@ -1,0 +1,179 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model account {
+  id                String  @id
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              user    @relation(fields: [userId], references: [id], onDelete: Cascade, map: "Account_userId_fkey")
+
+  @@unique([provider, providerAccountId], map: "Account_provider_providerAccountId_key")
+  @@index([userId], map: "Account_userId_fkey")
+}
+
+model bookmarkedbyauthor {
+  postId String
+  userId String
+  post   post   @relation(fields: [postId], references: [id], onDelete: Cascade, map: "BookmarkedByAuthor_postId_fkey")
+  user   user   @relation(fields: [userId], references: [id], onDelete: Cascade, map: "BookmarkedByAuthor_userId_fkey")
+
+  @@id([postId, userId])
+  @@index([userId], map: "BookmarkedByAuthor_userId_fkey")
+}
+
+model comment {
+  id                   String                 @id
+  commentText          String                 @default("") @db.VarChar(255)
+  createdOn            DateTime               @default(now())
+  userId               String
+  postId               String
+  post                 post                   @relation(fields: [postId], references: [id], onDelete: Cascade, map: "Comment_postId_fkey")
+  user                 user                   @relation(fields: [userId], references: [id], onDelete: Cascade, map: "Comment_userId_fkey")
+  commentlikedbyauthor commentlikedbyauthor[]
+
+  @@index([postId], map: "Comment_postId_fkey")
+  @@index([userId], map: "Comment_userId_fkey")
+}
+
+model commentlikedbyauthor {
+  commentId String
+  userId    String
+  comment   comment @relation(fields: [commentId], references: [id], onDelete: Cascade, map: "CommentLikedByAuthor_commentId_fkey")
+  user      user    @relation(fields: [userId], references: [id], onDelete: Cascade, map: "CommentLikedByAuthor_userId_fkey")
+
+  @@id([commentId, userId])
+  @@index([userId], map: "CommentLikedByAuthor_userId_fkey")
+}
+
+model follows {
+  followerId                     String
+  followingId                    String
+  user_follows_followerIdTouser  user   @relation("follows_followerIdTouser", fields: [followerId], references: [id], onDelete: Cascade, map: "Follows_followerId_fkey")
+  user_follows_followingIdTouser user   @relation("follows_followingIdTouser", fields: [followingId], references: [id], onDelete: Cascade, map: "Follows_followingId_fkey")
+
+  @@id([followerId, followingId])
+  @@index([followingId], map: "Follows_followingId_fkey")
+}
+
+model hashtag {
+  id            String          @id
+  text          String          @unique(map: "Hashtag_text_key") @default("hashtag") @db.VarChar(255)
+  subtext       String          @default("") @db.VarChar(255)
+  createdOn     DateTime        @default(now())
+  hashtagonpost hashtagonpost[]
+}
+
+model hashtagonpost {
+  createdOn DateTime @default(now())
+  postId    String
+  hashtagId String
+  hashtag   hashtag  @relation(fields: [hashtagId], references: [id], onDelete: Cascade, map: "HashtagOnPost_hashtagId_fkey")
+  post      post     @relation(fields: [postId], references: [id], onDelete: Cascade, map: "HashtagOnPost_postId_fkey")
+
+  @@id([hashtagId, postId])
+  @@index([postId], map: "HashtagOnPost_postId_fkey")
+}
+
+model likedbyauthor {
+  postId String
+  userId String
+  post   post   @relation(fields: [postId], references: [id], onDelete: Cascade, map: "LikedByAuthor_postId_fkey")
+  user   user   @relation(fields: [userId], references: [id], onDelete: Cascade, map: "LikedByAuthor_userId_fkey")
+
+  @@id([postId, userId])
+  @@index([userId], map: "LikedByAuthor_userId_fkey")
+}
+
+model notification {
+  id        String   @id
+  userId    String
+  iconImage String   @default("/favicon.ico") @db.VarChar(255)
+  text      String   @default("") @db.VarChar(255)
+  url       String   @default("/") @db.VarChar(255)
+  seen      Boolean  @default(false)
+  createdOn DateTime @default(now())
+  user      user     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "Notification_userId_fkey")
+
+  @@index([userId], map: "Notification_userId_fkey")
+}
+
+model post {
+  id                 String               @id
+  text               String               @db.VarChar(255)
+  image              String?              @db.VarChar(255)
+  createdOn          DateTime             @default(now())
+  authorId           String
+  bookmarkedbyauthor bookmarkedbyauthor[]
+  comment            comment[]
+  hashtagonpost      hashtagonpost[]
+  likedbyauthor      likedbyauthor[]
+  user               user                 @relation(fields: [authorId], references: [id], onDelete: Cascade, map: "Post_authorId_fkey")
+
+  @@index([authorId], map: "Post_authorId_fkey")
+}
+
+model session {
+  id           String   @id
+  sessionToken String   @unique(map: "Session_sessionToken_key")
+  userId       String
+  expires      DateTime
+  user         user     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "Session_userId_fkey")
+
+  @@index([userId], map: "Session_userId_fkey")
+}
+
+model settings {
+  id           String  @id
+  officialNews Boolean @default(true)
+  user         user[]
+}
+
+model user {
+  id                                String                 @id
+  name                              String
+  username                          String                 @unique(map: "User_username_key") @db.Char(16)
+  email                             String                 @unique(map: "User_email_key")
+  emailVerified                     DateTime?
+  image                             String                 @default("https://res.cloudinary.com/dwa8at7sx/image/upload/defaultavatar_ve03ed.png") @db.VarChar(255)
+  joinedOn                          DateTime               @default(now())
+  authorVerified                    Boolean                @default(false)
+  role                              user_role              @default(USER)
+  settingsId                        String
+  url                               String?                @db.Text
+  banner                            String                 @default("https://res.cloudinary.com/dwa8at7sx/image/upload/v1677930500/defaultbanner_hjtdni.png") @db.VarChar(255)
+  bio                               String?                @db.Text
+  account                           account[]
+  bookmarkedbyauthor                bookmarkedbyauthor[]
+  comment                           comment[]
+  commentlikedbyauthor              commentlikedbyauthor[]
+  follows_follows_followerIdTouser  follows[]              @relation("follows_followerIdTouser")
+  follows_follows_followingIdTouser follows[]              @relation("follows_followingIdTouser")
+  likedbyauthor                     likedbyauthor[]
+  notification                      notification[]
+  post                              post[]
+  session                           session[]
+  settings                          settings               @relation(fields: [settingsId], references: [id], onDelete: Cascade, map: "User_settingsId_fkey")
+
+  @@index([settingsId], map: "User_settingsId_fkey")
+}
+
+enum user_role {
+  USER
+  DEVELOPER
+}
