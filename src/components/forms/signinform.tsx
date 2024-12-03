@@ -18,15 +18,7 @@ const SignInForm: FC = () => {
           Google
         </button>
       </div>
-      <div className='mx-16 w-full px-6 sm:px-0'>
-        <button
-          className='btn'
-          onClick={() => {
-            void signIn('github');
-          }}>
-          Github
-        </button>
-      </div>
+      
 
     </div>
     
