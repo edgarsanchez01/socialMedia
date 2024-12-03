@@ -1,88 +1,74 @@
 {
-  "name": "Social Media",
-  "short_name": "SM",
-  "description": "Una plataforma de microblogging.",
+  "name": "Social media",
+  "short_name": "Social media",
+  "description": "Una plataforma para interaccion social",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "theme_color": "#141d31",
-  "background_color": "#141d31",
+  "shortcuts": [
+    {
+      "name": "Inicio",
+      "short_name": "Inicio",
+      "description": "Inicio Page",
+      "url": "/home",
+      "icons": [{ "src": "/icons/home-icon-48x48.png", "sizes": "48x48" }]
+    },
+    {
+      "name": "Perfil",
+      "short_name": "Perfil",
+      "description": "tu Perfil Page",
+      "url": "/profile",
+      "icons": [{ "src": "/icons/profile-icon-48x48.png", "sizes": "48x48" }]
+    },
+    {
+      "name": "Tendencia",
+      "short_name": "Tendencia",
+      "description": "Tendencia Page",
+      "url": "/trending",
+      "icons": [{ "src": "/icons/trending-icon-48x48.png", "sizes": "48x48" }]
+    },
+    {
+      "name": "Configuraciones",
+      "short_name": "Configuraciones",
+      "description": "Configuraciones Page",
+      "url": "/settings",
+      "icons": [{ "src": "/icons/settings-icon-48x48.png", "sizes": "48x48" }]
+    }
+  ],
   "icons": [
     {
-      "src": "/icons/icon-192x192.png",
+      "src": "icons/apple-touch-icon.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icons/icon-512x512.png",
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "/icons/maskable_icon.png",
+      "src": "icons/maskable_icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }
   ],
-  "screenshots": [
-    {
-      "src": "/screenshots/desktop-screenshot.png",
-      "sizes": "1920x1080",
-      "type": "image/png",
-      "form_factor": "wide"
-    },
-    {
-      "src": "/screenshots/mobile-screenshot.png",
-      "sizes": "375x812",
-      "type": "image/png",
-      "form_factor": "narrow"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Home",
-      "url": "/home",
-      "icons": [
-        {
-          "src": "/icons/home-icon-96x96.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Profile",
-      "url": "/profile",
-      "icons": [
-        {
-          "src": "/icons/profile-icon-96x96.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Trending",
-      "url": "/trending",
-      "icons": [
-        {
-          "src": "/icons/trending-icon-96x96.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Settings",
-      "url": "/settings",
-      "icons": [
-        {
-          "src": "/icons/settings-icon-96x96.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    }
-  ]
+  
+  "theme_color": "#141d31",
+  "background_color": "#141d31"
 }

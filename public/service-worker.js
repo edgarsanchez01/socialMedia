@@ -1,32 +1,33 @@
-const CACHE_NAME = 'v1';
+const CACHE_NAME = 'plex-cache-v1';
 const urlsToCache = [
-  '/',
-  '/manifest.json',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
+  '/', // Página principal
+  '/favicon.ico', // Ícono
+  '/manifest.json', // Manifest
+  '/icons/icon-192x192.png', // Ícono
+  '/icons/icon-512x512.png', // Ícono
 ];
 
-// Instalar el Service Worker y agregar archivos al caché
+// Instalación del Service Worker
 self.addEventListener('install', (event) => {
-  console.log('Service Worker instalado');
+  console.log('[Service Worker] Instalando...');
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('Archivos en caché');
+      console.log('[Service Worker] Archivos cacheados:', urlsToCache);
       return cache.addAll(urlsToCache);
     })
   );
 });
 
-// Activar el Service Worker y limpiar cachés antiguas
+// Activación del Service Worker
 self.addEventListener('activate', (event) => {
-  console.log('Service Worker activado');
+  console.log('[Service Worker] Activado');
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.map((cache) => {
-          if (cache !== CACHE_NAME) {
-            console.log('Caché vieja eliminada:', cache);
-            return caches.delete(cache);
+        cacheNames.map((cacheName) => {
+          if (cacheName !== CACHE_NAME) {
+            console.log('[Service Worker] Borrando caché antigua:', cacheName);
+            return caches.delete(cacheName);
           }
         })
       );
@@ -34,11 +35,22 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Interceptar solicitudes y servir desde la caché
+// Interceptar solicitudes
 self.addEventListener('fetch', (event) => {
+  const url = new URL(event.request.url);
+
+  // Excluir rutas de API o autenticación
+  if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/signin') || url.pathname.startsWith('/auth/')) {
+    console.log('[Service Worker] Pasando por la red:', url.pathname);
+    return; // No interceptar estas solicitudes
+  }
+
+  console.log('[Service Worker] Interceptando:', event.request.url);
   event.respondWith(
     caches.match(event.request).then((response) => {
       return response || fetch(event.request);
+    }).catch((error) => {
+      console.error('[Service Worker] Error al manejar fetch:', error);
     })
   );
 });
